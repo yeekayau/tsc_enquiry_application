@@ -7,9 +7,9 @@ cnxn = pypyodbc.connect('Driver={SQL Server Native Client 10.0};'
 
 cursor = cnxn.cursor()
 
-cursor.execute("select top 10* from Selections")
+cursor.execute("select top 10 SOURCECODE from Selections")
 
-row = cursor.fetchone()
-
+row = cursor.fetchall()
 if row:
 	print(row)
+
