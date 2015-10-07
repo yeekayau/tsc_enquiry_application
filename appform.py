@@ -1,7 +1,7 @@
 
 
 # AppForm Test
-
+import pypyodbc
 import urllib.request
 from xml.etree import ElementTree
 
@@ -38,5 +38,25 @@ for node in tree.iter():
         person_dict = None
 
 print(person_list)
-#for item in person_list:
-#    print(person_dict)
+
+# ----------------------------------------
+# Create connection to DB
+cnxn = pypyodbc.connect('Driver={SQL Server Native Client 10.0};'
+						'server=DASDB01;'
+						'database=IA_CDIS;'
+						'trusted_connection=yes;')
+
+cursor = cnxn.cursor()
+
+sql = 'insert into Form_test(p_guid, Lastname, Firstname) values (Newid(),{},{})'
+
+for result in person_list:
+    Lastname = "'{}'".format(result.get('Lastname'))
+    Firstname = "'{}'".format(result.get('Firstname'))
+    insert = sql.format(Lastname, Firstname)
+    print(insert)
+    cursor.execute(insert)
+    cnxn.commit()
+
+
+

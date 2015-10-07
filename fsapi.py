@@ -1,8 +1,16 @@
 
 # Family Survey
-
+import pypyodbc
 import urllib.request
 from xml.etree import ElementTree
+
+# Create connection to DB
+cnxn = pypyodbc.connect('Driver={SQL Server Native Client 10.0};'
+                        'server=DASDB01;'
+                        'database=IA_CDIS;'
+                        'trusted_connection=yes;')
+
+
 
 fs_familysurvey_api_key = 'Uypjm786XfmF'
 fs_familysurvey_apibase_url = 'https://fs30.formsite.com/api/users/TheShepherdCentre/forms/form2/'
