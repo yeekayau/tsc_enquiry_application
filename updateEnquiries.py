@@ -18,7 +18,9 @@ tree = ElementTree.parse(x)
 
 enquiry_list = getEnquiryFormData(tree)
 
-print(enquiry_list)
+for dictionary in enquiry_list:
+    for key, name in dictionary.items():
+        print(key + ': ' + name)
 # ----------------------------------------
 # Create connection to DB
 # cnxn = pypyodbc.connect('Driver={SQL Server Native Client 10.0};'
