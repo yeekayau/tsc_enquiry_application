@@ -50,11 +50,16 @@ def getAppFormData(tree):
 
 def getEnquiryFormData(tree):
     enquiry_list = []
+    enquiry_dict = {}
 
     for node in tree.iter():
     
         if node.attrib.get('id') == 'result_status':
-            enquiry_dict = {}
+            # does the dict have stuff in it, if true, do statement?
+            if bool(enquiry_dict):
+                enquiry_list.append(enquiry_dict)
+                enquiry_dict = None
+                enquiry_dict = {}
 
             enquiry_dict['result_status'] = node.text
 
@@ -121,9 +126,12 @@ def getEnquiryFormData(tree):
             for day in node:
                 getPreferredContactDayTime(day, enquiry_dict)
 
-            enquiry_list.append(enquiry_dict)
-            enquiry_dict = None
-
+        if node.attrib.get('id') == '190':
+            for child in node:
+                enquiry_dict['How we can help'] = child.text
+    
+    # Append last result
+    enquiry_list.append(enquiry_dict)      
     return enquiry_list
 
     
