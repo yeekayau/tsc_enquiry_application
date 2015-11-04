@@ -32,15 +32,14 @@ cnxn = pypyodbc.connect('Driver={SQL Server Native Client 10.0};'
 
 cursor = cnxn.cursor()
 # 37 items
-sql = ('insert into Enquires('
+sql = ('insert into Enquiries('
 'result_status, '
 'date_start, '
 'date_finish, '
 'user_browser, '
 'user_os, '
 'user_referrer, '
-'client_p_guid, '
-'Lastname, '
+'client_pguid, '
 'Firstname, '
 'lastname, '
 'dateofbirth, '
@@ -69,7 +68,7 @@ sql = ('insert into Enquires('
 '[p_c_day_fri_afternoon], '
 '[how_can_we_help], '
 'joined_program,'
-'not_joined_reason) '
+'not_joined_reason) ' #37
 'values '
 '({},{},{},{},{},{},Newid(),{},{},{},{},{},{},{},{},{},{},{},{},'
 '{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},0,0)')
@@ -213,8 +212,8 @@ for result in enquiry_list:
                         p_c_day_fri_afternoon, 
                         how_can_we_help)
     print(insert)
-    # cursor.execute(insert)
-    # cnxn.commit()
+    cursor.execute(insert)
+    cnxn.commit()
 
 
 

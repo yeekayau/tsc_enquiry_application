@@ -84,7 +84,7 @@ def getEnquiryFormData(tree):
 
         if node.attrib.get('id') == '173':
             for child in node:
-                enquiry_dict['lastname'] = child.text
+                enquiry_dict['Lastname'] = child.text
     
         if node.attrib.get('id') == '48':
             for child in node:
