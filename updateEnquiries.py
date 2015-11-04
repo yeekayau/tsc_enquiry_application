@@ -117,7 +117,7 @@ sql = ('insert into Enquiries('
 
 for result in enquiry_list:
     
-    # Add method to check whether this enquiry record is already in the database
+    # method to check whether this enquiry record is already in the database
     already_in_db = checkRecordinDB(cnxn, result)
 
     if already_in_db == 0:
