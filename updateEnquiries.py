@@ -69,10 +69,10 @@ sql = ('insert into Enquires('
 '[p_c_day_fri_afternoon], '
 '[how_can_we_help], '
 'joined_program,'
-'not_joined_reason'
+'not_joined_reason) '
 'values '
 '({},{},{},{},{},{},Newid(),{},{},{},{},{},{},{},{},{},{},{},{},'
-'{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},0,NULL)')
+'{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},0,0)')
 
 for result in enquiry_list:
     
@@ -99,25 +99,85 @@ for result in enquiry_list:
     preferred_contact_method = "'{}'".format(result.get('preferred_contact_method'))
 
     if result.get('p_c_day_mon_morning'):
-        p_c_day_mon_morning = "'{}'".format(result.get('p_c_day_mon_morning'))
+        p_c_day_mon_morning = 1
     else:
         p_c_day_mon_morning = 0
         
-    p_c_day_mon_lunch = "'{}'".format(result.get('p_c_day_mon_lunch'))
-    p_c_day_mon_afternoon = "'{}'".format(result.get('p_c_day_mon_afternoon'))
-    p_c_day_tues_morning = "'{}'".format(result.get('p_c_day_tues_morning'))
-    p_c_day_tues_lunch = "'{}'".format(result.get('p_c_day_tues_lunch'))
-    p_c_day_tues_afternoon = "'{}'".format(result.get('p_c_day_tues_afternoon'))
-    p_c_day_wed_morning = "'{}'".format(result.get('p_c_day_wed_morning'))
-    p_c_day_wed_lunch = "'{}'".format(result.get('p_c_day_wed_lunch'))
-    p_c_day_wed_afternoon = "'{}'".format(result.get('p_c_day_wed_afternoon'))
-    p_c_day_thurs_morning = "'{}'".format(result.get('p_c_day_thurs_morning'))
-    p_c_day_thurs_lunch = "'{}'".format(result.get('p_c_day_thurs_lunch'))
-    p_c_day_thurs_afternoon = "'{}'".format(result.get('p_c_day_thurs_afternoon'))
-    p_c_day_fri_morning = "'{}'".format(result.get('p_c_day_fri_morning'))
-    p_c_day_fri_lunch = "'{}'".format(result.get('p_c_day_fri_lunch'))
-    p_c_day_fri_afternoon = "'{}'".format(result.get('p_c_day_fri_afternoon'))
-    how_can_we_help = "'{}'".format(result.get('how_can_we_help'))
+    if result.get('p_c_day_mon_lunch'):
+        p_c_day_mon_lunch = 1
+    else:
+        p_c_day_mon_lunch = 0
+
+    if result.get('p_c_day_mon_afternoon'):
+        p_c_day_mon_afternoon = 1
+    else:
+        p_c_day_mon_afternoon = 0    
+
+    if result.get('p_c_day_tues_morning'):
+        p_c_day_tues_morning = 1
+    else:
+        p_c_day_tues_morning = 0
+        
+    if result.get('p_c_day_tues_lunch'):
+        p_c_day_tues_lunch = 1
+    else:
+        p_c_day_tues_lunch = 0
+
+    if result.get('p_c_day_tues_afternoon'):
+        p_c_day_tues_afternoon = 1
+    else:
+        p_c_day_tues_afternoon = 0
+
+    if result.get('p_c_day_wed_morning'):
+        p_c_day_wed_morning = 1
+    else:
+        p_c_day_wed_morning = 0
+        
+    if result.get('p_c_day_wed_lunch'):
+        p_c_day_wed_lunch = 1
+    else:
+        p_c_day_wed_lunch = 0
+
+    if result.get('p_c_day_wed_afternoon'):
+        p_c_day_wed_afternoon = 1
+    else:
+        p_c_day_wed_afternoon = 0
+
+    if result.get('p_c_day_thurs_morning'):
+        p_c_day_thurs_morning = 1
+    else:
+        p_c_day_thurs_morning = 0
+        
+    if result.get('p_c_day_thurs_lunch'):
+        p_c_day_thurs_lunch = 1
+    else:
+        p_c_day_thurs_lunch = 0
+
+    if result.get('p_c_day_thurs_afternoon'):
+        p_c_day_thurs_afternoon = 1
+    else:
+        p_c_day_thurs_afternoon = 0
+
+    if result.get('p_c_day_fri_morning'):
+        p_c_day_fri_morning = 1
+    else:
+        p_c_day_fri_morning = 0
+        
+    if result.get('p_c_day_fri_lunch'):
+        p_c_day_fri_lunch = 1
+    else:
+        p_c_day_fri_lunch = 0
+
+    if result.get('p_c_day_fri_afternoon'):
+        p_c_day_fri_afternoon = 1
+    else:
+        p_c_day_fri_afternoon = 0
+
+    if result.get('How_can_we_help'):
+        how_can_we_help = "'{}'".format(result.get('How_can_we_help'))
+    else:
+        how_can_we_help = "'{}'".format('This is a mystery')
+
 
     insert = sql.format(result_status, 
                         date_start, 
@@ -153,8 +213,8 @@ for result in enquiry_list:
                         p_c_day_fri_afternoon, 
                         how_can_we_help)
     print(insert)
-#     cursor.execute(insert)
-#     cnxn.commit()
+    # cursor.execute(insert)
+    # cnxn.commit()
 
 
 

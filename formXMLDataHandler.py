@@ -128,7 +128,7 @@ def getEnquiryFormData(tree):
 
         if node.attrib.get('id') == '190':
             for child in node:
-                enquiry_dict['How we can help'] = child.text
+                enquiry_dict['How_can_we_help'] = child.text
     
     # Append last result
     enquiry_list.append(enquiry_dict)      
