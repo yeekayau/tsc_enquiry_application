@@ -39,6 +39,7 @@ cnxn = pypyodbc.connect('Driver={SQL Server Native Client 10.0};'
 
 #cursor = cnxn.cursor()
 # 38 items
+
 sql = ('insert into Enquiries('
 'result_status, '
 'date_start, '
@@ -79,8 +80,9 @@ sql = ('insert into Enquiries('
 'joined_program,'
 'not_joined_reason) ' #38
 'values '
-'({},{},{},{},{},{},{},Newid(),{},{},{},{},{},{},{},{},{},{},{},{},{},'
-'{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},0,0)')
+'(?,?,?,?,?,?,?,Newid(),?,?,?,?,?,?,?,?,?,?,?,?,?,'
+'?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,0)')
+
 
 for result in enquiry_list:
     
@@ -89,38 +91,38 @@ for result in enquiry_list:
     cursor = cnxn.cursor()
 
     if result.get('result_status'):
-        result_status = "'{}'".format(result.get('result_status')) 
+        result_status = result.get('result_status') 
     else:
         result_status = 'Incomplete'
 
-    date_start = "'{}'".format(result.get('date_start'))
-    date_finish = "'{}'".format(result.get('date_finish')) 
-    user_browser = "'{}'".format(result.get('user_browser'))
-    user_os = "'{}'".format(result.get('user_os')) 
-    user_referrer = "'{}'".format(result.get('user_referrer'))
+    date_start = result.get('date_start')
+    date_finish = result.get('date_finish') 
+    user_browser = result.get('user_browser')
+    user_os = result.get('user_os') 
+    user_referrer = result.get('user_referrer')
 
     if result.get('completed_by'):
-        completed_by = "'{}'".format(result.get('completed_by')) 
+        completed_by = result.get('completed_by') 
     else:
-        completed_by = "'{}'".format('old result')
+        completed_by = 'old result'
 
-    Lastname = "'{}'".format(result.get('Lastname'))
-    Firstname = "'{}'".format(result.get('Firstname'))
-    dateofbirth = "'{}'".format(result.get('dateofbirth'))
-    caregiver_firstname = "'{}'".format(result.get('caregiver_firstname'))
-    caregiver_lastname = "'{}'".format(result.get('caregiver_lastname'))
-    relationship_to_child = "'{}'".format(result.get('relationship_to_child'))
-    suburb = "'{}'".format(result.get('suburb'))
+    Lastname = result.get('Lastname')
+    Firstname = result.get('Firstname')
+    dateofbirth = result.get('dateofbirth')
+    caregiver_firstname = result.get('caregiver_firstname')
+    caregiver_lastname = result.get('caregiver_lastname')
+    relationship_to_child = result.get('relationship_to_child')
+    suburb = result.get('suburb')
 
     if result.get('postcode'): 
-        postcode = "'{}'".format(result.get('postcode'))
+        postcode = result.get('postcode')
     else:
         postcode = 0
 
-    caregiver_phone = "'{}'".format(result.get('caregiver_phone'))
-    caregiver_alt_phone = "'{}'".format(result.get('caregiver_alt_phone'))
-    caregiver_email = "'{}'".format(result.get('caregiver_email'))
-    preferred_contact_method = "'{}'".format(result.get('preferred_contact_method'))
+    caregiver_phone = result.get('caregiver_phone')
+    caregiver_alt_phone = result.get('caregiver_alt_phone')
+    caregiver_email = result.get('caregiver_email')
+    preferred_contact_method = result.get('preferred_contact_method')
 
     p_c_day_mon_morning = validatePreferredContactDayTime('p_c_day_mon_morning')
     p_c_day_mon_lunch = validatePreferredContactDayTime('p_c_day_mon_lunch')
@@ -139,50 +141,46 @@ for result in enquiry_list:
     p_c_day_fri_afternoon = validatePreferredContactDayTime('p_c_day_fri_afternoon')
 
     if result.get('How_can_we_help'):
-        how_can_we_help = "'{}'".format(result.get('How_can_we_help'))
+        how_can_we_help = result.get('How_can_we_help')
     else:
-        how_can_we_help = "'{}'".format('This is a mystery')
+        how_can_we_help = 'This is a mystery'
 
+    insert_tuple = (result_status, 
+                date_start, 
+                date_finish,
+                user_browser, 
+                user_os, 
+                user_referrer, 
+                completed_by,
+                Firstname, 
+                Lastname, 
+                dateofbirth,
+                caregiver_firstname, 
+                caregiver_lastname, 
+                relationship_to_child, 
+                suburb, 
+                postcode,
+                caregiver_phone, 
+                caregiver_alt_phone, 
+                caregiver_email, 
+                preferred_contact_method,
+                p_c_day_mon_morning,
+                p_c_day_mon_lunch,
+                p_c_day_mon_afternoon,
+                p_c_day_tues_morning,
+                p_c_day_tues_lunch,
+                p_c_day_tues_afternoon,
+                p_c_day_wed_morning,
+                p_c_day_wed_lunch,
+                p_c_day_wed_afternoon,
+                p_c_day_thurs_morning,
+                p_c_day_thurs_lunch,
+                p_c_day_thurs_afternoon, 
+                p_c_day_fri_morning, 
+                p_c_day_fri_lunch, 
+                p_c_day_fri_afternoon, 
+                how_can_we_help)
 
-    insert = sql.format(result_status, 
-                        date_start, 
-                        date_finish,
-                        user_browser, 
-                        user_os, 
-                        user_referrer, 
-                        completed_by,
-                        Firstname, 
-                        Lastname, 
-                        dateofbirth,
-                        caregiver_firstname, 
-                        caregiver_lastname, 
-                        relationship_to_child, 
-                        suburb, 
-                        postcode,
-                        caregiver_phone, 
-                        caregiver_alt_phone, 
-                        caregiver_email, 
-                        preferred_contact_method,
-                        p_c_day_mon_morning,
-                        p_c_day_mon_lunch,
-                        p_c_day_mon_afternoon,
-                        p_c_day_tues_morning,
-                        p_c_day_tues_lunch,
-                        p_c_day_tues_afternoon,
-                        p_c_day_wed_morning,
-                        p_c_day_wed_lunch,
-                        p_c_day_wed_afternoon,
-                        p_c_day_thurs_morning,
-                        p_c_day_thurs_lunch,
-                        p_c_day_thurs_afternoon, 
-                        p_c_day_fri_morning, 
-                        p_c_day_fri_lunch, 
-                        p_c_day_fri_afternoon, 
-                        how_can_we_help)
-    print(insert)
-    cursor.execute(insert)
+    cursor.execute(sql, insert_tuple)
+
     cnxn.commit()
-
-
-
-# Need to sort out the ordering of the insert to match db table!!
