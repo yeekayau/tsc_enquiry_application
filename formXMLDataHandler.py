@@ -78,9 +78,13 @@ def getEnquiryFormData(tree):
         if node.attrib.get('id') == 'user_referrer':
             enquiry_dict['user_referrer'] = node.text
 
+        if node.attrib.get('id') == '192':
+            for child in node:
+                enquiry_dict['completed_by'] = child.text
+            
         if node.attrib.get('id') == '172':
-            for node in node:
-                enquiry_dict['Firstname'] = node.text
+            for child in node:
+                enquiry_dict['Firstname'] = child.text
 
         if node.attrib.get('id') == '173':
             for child in node:
@@ -105,6 +109,10 @@ def getEnquiryFormData(tree):
         if node.attrib.get('id') == '175':
             for child in node:
                 enquiry_dict['suburb'] = child.text
+
+        if node.attrib.get('id') == '193':
+            for child in node:
+                enquiry_dict['postcode'] = child.text
 
         if node.attrib.get('id') == '177':
             for child in node:

@@ -23,6 +23,13 @@ for dictionary in enquiry_list:
     for key, name in dictionary.items():
         print(key + ': ' + name)
  
+def validatePreferredContactDayTime(contact_time):
+    if result.get(contact_time):
+        c_time = 1
+    else:
+        c_time = 0
+    return c_time
+
 # ----------------------------------------
 # Create connection to DB
 cnxn = pypyodbc.connect('Driver={SQL Server Native Client 10.0};'
@@ -30,8 +37,8 @@ cnxn = pypyodbc.connect('Driver={SQL Server Native Client 10.0};'
 						'database=IA_CDIS;'
 						'trusted_connection=yes;')
 
-cursor = cnxn.cursor()
-# 37 items
+#cursor = cnxn.cursor()
+# 38 items
 sql = ('insert into Enquiries('
 'result_status, '
 'date_start, '
@@ -39,14 +46,16 @@ sql = ('insert into Enquiries('
 'user_browser, '
 'user_os, '
 'user_referrer, '
+'completed_by, '
 'client_pguid, '
-'Firstname, '
+'firstname, '
 'lastname, '
 'dateofbirth, '
 'caregiver_firstname, ' 
 'caregiver_lastname, '
 'relationship_to_child, '
 'suburb, '
+'postcode, '
 'caregiver_phone, '
 'caregiver_alt_phone, '
 'caregiver_email, '
@@ -68,13 +77,17 @@ sql = ('insert into Enquiries('
 '[p_c_day_fri_afternoon], '
 '[how_can_we_help], '
 'joined_program,'
-'not_joined_reason) ' #37
+'not_joined_reason) ' #38
 'values '
-'({},{},{},{},{},{},Newid(),{},{},{},{},{},{},{},{},{},{},{},{},'
+'({},{},{},{},{},{},{},Newid(),{},{},{},{},{},{},{},{},{},{},{},{},{},'
 '{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},0,0)')
 
 for result in enquiry_list:
     
+    # Add method to check whether this enquiry record is already in the database
+
+    cursor = cnxn.cursor()
+
     if result.get('result_status'):
         result_status = "'{}'".format(result.get('result_status')) 
     else:
@@ -85,6 +98,12 @@ for result in enquiry_list:
     user_browser = "'{}'".format(result.get('user_browser'))
     user_os = "'{}'".format(result.get('user_os')) 
     user_referrer = "'{}'".format(result.get('user_referrer'))
+
+    if result.get('completed_by'):
+        completed_by = "'{}'".format(result.get('completed_by')) 
+    else:
+        completed_by = "'{}'".format('old result')
+
     Lastname = "'{}'".format(result.get('Lastname'))
     Firstname = "'{}'".format(result.get('Firstname'))
     dateofbirth = "'{}'".format(result.get('dateofbirth'))
@@ -92,85 +111,32 @@ for result in enquiry_list:
     caregiver_lastname = "'{}'".format(result.get('caregiver_lastname'))
     relationship_to_child = "'{}'".format(result.get('relationship_to_child'))
     suburb = "'{}'".format(result.get('suburb'))
+
+    if result.get('postcode'): 
+        postcode = "'{}'".format(result.get('postcode'))
+    else:
+        postcode = 0
+
     caregiver_phone = "'{}'".format(result.get('caregiver_phone'))
     caregiver_alt_phone = "'{}'".format(result.get('caregiver_alt_phone'))
     caregiver_email = "'{}'".format(result.get('caregiver_email'))
     preferred_contact_method = "'{}'".format(result.get('preferred_contact_method'))
 
-    if result.get('p_c_day_mon_morning'):
-        p_c_day_mon_morning = 1
-    else:
-        p_c_day_mon_morning = 0
-        
-    if result.get('p_c_day_mon_lunch'):
-        p_c_day_mon_lunch = 1
-    else:
-        p_c_day_mon_lunch = 0
-
-    if result.get('p_c_day_mon_afternoon'):
-        p_c_day_mon_afternoon = 1
-    else:
-        p_c_day_mon_afternoon = 0    
-
-    if result.get('p_c_day_tues_morning'):
-        p_c_day_tues_morning = 1
-    else:
-        p_c_day_tues_morning = 0
-        
-    if result.get('p_c_day_tues_lunch'):
-        p_c_day_tues_lunch = 1
-    else:
-        p_c_day_tues_lunch = 0
-
-    if result.get('p_c_day_tues_afternoon'):
-        p_c_day_tues_afternoon = 1
-    else:
-        p_c_day_tues_afternoon = 0
-
-    if result.get('p_c_day_wed_morning'):
-        p_c_day_wed_morning = 1
-    else:
-        p_c_day_wed_morning = 0
-        
-    if result.get('p_c_day_wed_lunch'):
-        p_c_day_wed_lunch = 1
-    else:
-        p_c_day_wed_lunch = 0
-
-    if result.get('p_c_day_wed_afternoon'):
-        p_c_day_wed_afternoon = 1
-    else:
-        p_c_day_wed_afternoon = 0
-
-    if result.get('p_c_day_thurs_morning'):
-        p_c_day_thurs_morning = 1
-    else:
-        p_c_day_thurs_morning = 0
-        
-    if result.get('p_c_day_thurs_lunch'):
-        p_c_day_thurs_lunch = 1
-    else:
-        p_c_day_thurs_lunch = 0
-
-    if result.get('p_c_day_thurs_afternoon'):
-        p_c_day_thurs_afternoon = 1
-    else:
-        p_c_day_thurs_afternoon = 0
-
-    if result.get('p_c_day_fri_morning'):
-        p_c_day_fri_morning = 1
-    else:
-        p_c_day_fri_morning = 0
-        
-    if result.get('p_c_day_fri_lunch'):
-        p_c_day_fri_lunch = 1
-    else:
-        p_c_day_fri_lunch = 0
-
-    if result.get('p_c_day_fri_afternoon'):
-        p_c_day_fri_afternoon = 1
-    else:
-        p_c_day_fri_afternoon = 0
+    p_c_day_mon_morning = validatePreferredContactDayTime('p_c_day_mon_morning')
+    p_c_day_mon_lunch = validatePreferredContactDayTime('p_c_day_mon_lunch')
+    p_c_day_mon_afternoon = validatePreferredContactDayTime('p_c_day_mon_afternoon')    
+    p_c_day_tues_morning = validatePreferredContactDayTime('p_c_day_tues_morning')
+    p_c_day_tues_lunch = validatePreferredContactDayTime('p_c_day_tues_lunch')
+    p_c_day_tues_afternoon = validatePreferredContactDayTime('p_c_day_tues_afternoon')
+    p_c_day_wed_morning = validatePreferredContactDayTime('p_c_day_wed_morning')
+    p_c_day_wed_lunch = validatePreferredContactDayTime('p_c_day_wed_lunch')
+    p_c_day_wed_afternoon = validatePreferredContactDayTime('p_c_day_wed_afternoon')
+    p_c_day_thurs_morning = validatePreferredContactDayTime('p_c_day_thurs_morning')
+    p_c_day_thurs_lunch = validatePreferredContactDayTime('p_c_day_thurs_lunch')
+    p_c_day_thurs_afternoon = validatePreferredContactDayTime('p_c_day_thurs_afternoon')
+    p_c_day_fri_morning = validatePreferredContactDayTime('p_c_day_fri_morning')
+    p_c_day_fri_lunch = validatePreferredContactDayTime('p_c_day_fri_lunch')
+    p_c_day_fri_afternoon = validatePreferredContactDayTime('p_c_day_fri_afternoon')
 
     if result.get('How_can_we_help'):
         how_can_we_help = "'{}'".format(result.get('How_can_we_help'))
@@ -184,13 +150,15 @@ for result in enquiry_list:
                         user_browser, 
                         user_os, 
                         user_referrer, 
+                        completed_by,
                         Firstname, 
                         Lastname, 
-                        dateofbirth, 
+                        dateofbirth,
                         caregiver_firstname, 
                         caregiver_lastname, 
                         relationship_to_child, 
                         suburb, 
+                        postcode,
                         caregiver_phone, 
                         caregiver_alt_phone, 
                         caregiver_email, 
@@ -217,3 +185,4 @@ for result in enquiry_list:
 
 
 
+# Need to sort out the ordering of the insert to match db table!!
