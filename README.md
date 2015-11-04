@@ -1,12 +1,12 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
 * Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+* Version 1
+
+This is the program to pull New Enquiry Form data from formsite
+
 
 ### How do I get set up? ###
 
@@ -17,19 +17,13 @@ This README would normally document whatever steps are necessary to get your app
 * How to run tests
 * Deployment instructions
 
-Libraries required:
+### Libraries required: ###
 
 pypyodbc
 urllib.request
 xml.etree import ElementTree
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+formXMLDataHandler import getEnquiryFormData
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* Yeeka
