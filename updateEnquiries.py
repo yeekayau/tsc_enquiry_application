@@ -3,6 +3,7 @@
 from formXMLDataHandler import getEnquiryFormData
 import pypyodbc
 import urllib.request
+import ctypes  # An included library with Python install.
 from xml.etree import ElementTree
 
 fs_api_key = 'Uypjm786XfmF'
@@ -114,7 +115,7 @@ sql = ('insert into Enquiries('
 '(?,?,?,?,?,?,?,Newid(),?,?,?,?,?,?,?,?,?,?,?,?,?,'
 '?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,0)')
 
-
+entries_added = 0
 for result in enquiry_list:
     
     # method to check whether this enquiry record is already in the database
@@ -221,3 +222,9 @@ for result in enquiry_list:
 
         cursor.execute(sql, insert_tuple)
         cnxn.commit()
+        entries_added = entries_added + 1
+
+cnxn.close()
+messageBox = ctypes.windll.user32.MessageBoxW
+returnValue = messageBox(None,"{} new entries have been downloaded!".format(entries_added),
+                         "Done!", 0x40 | 0x0)

@@ -1,0 +1,104 @@
+
+/* This is responsive design stuff. Basically media queries specifies conditions for the css in the brackets to be run.
+    i.e. in first example, if the @media is a screen and it's min-width is greater than 480px - apply the css. 
+    
+    Note the order of the media queries as well. Bottom overrides the top, only for the things that are specified. Other things
+    will stay the same. 
+
+*/
+
+
+@media screen and (min-width: 480px) {
+  /* beyond 480 px, bigger than mobile screen */
+  
+  /*******************************************************************************************************
+TWO COLUMN LAYOUT
+********************************************************************************************************/
+  
+  #primary{
+    width:50%;
+    float:left;
+  }
+
+  #secondary{
+    width:40%;
+    float:right;
+  }  
+
+/*******************************************************************************************************
+PAGE: Home
+  
+ 3 images with 2.5% padding on every side: 3*5 = 15, Leaves 100-15=85% remaining for 3 images, 85%/3 = 28.3333
+********************************************************************************************************/
+
+#gallery li {
+    width:28.3333%;
+  }
+  
+/* selects the 4th image element in the gallery list and pushes it onto the next row, when media query is met*/
+#gallery li:nth-child(4n) {
+    clear: left;
+  }
+
+  
+/*******************************************************************************************************
+PAGE: About
+********************************************************************************************************/
+  
+.profile-photo {
+   float:left;
+   margin:0 5% 80px 0;  /* 5% margin on the side and 80px margin on the bottom, basically pushes profile pic to left of text */ 
+  body{
+   background: navy; 
+  }
+  
+}
+
+
+@media screen and (min-width: 660px) {
+
+  /* beyond 660 px, for desktops/large tablets */
+  
+  /*******************************************************************************************************
+HEADER
+********************************************************************************************************/
+  
+  nav {
+    /* pushes the navigation menu elements to the right */
+   background: none;
+   float: right;
+   font-size: 1.125em;
+   margin-right: 5%;
+   text-align:right;
+   width: 45%;
+  }
+  
+  #logo {
+    /* pushes the header stuff to the left */
+   float: left;
+   margin-left: 5%;
+   text-align: left;
+   width: 45%;
+  }
+  
+  h1 {
+   font-size: 2.5em; 
+  }
+  
+  h2 {
+   font-size: 0.825em;
+   margin-bottom:20px;
+  }  
+  
+  header {
+   border-bottom:5px solid #5f5d66;
+   margin-bottom: 60px;
+  }
+  
+  /* beyond 660 px, desktops/large tablets */
+  body{
+   background: #fff; 
+  }
+  
+
+}
