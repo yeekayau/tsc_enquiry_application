@@ -8,7 +8,7 @@ DEBUG=True
 app = Flask(__name__)
 
 # ----------------------------------------
-# Create connection to DB
+# Create connection to DB, the Mars_Connection thing allows you to fetch multiple rows
 cnxn = pypyodbc.connect('Driver={SQL Server Native Client 10.0};'
 						'server=DASDB01;'
 						'database=IA_CDIS;'
