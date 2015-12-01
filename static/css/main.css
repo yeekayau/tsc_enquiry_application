@@ -184,6 +184,9 @@ nav {
  background-color: none; 
 }
 
+p {
+  color: : #84a2d4;  
+}
 
 /* Here we select each anchored element in the navigation panel - and the color when a link has been visited*/
 nav a, nav a:visited{
