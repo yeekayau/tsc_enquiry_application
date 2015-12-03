@@ -21,6 +21,13 @@ a {
   margin:0;
 }
 
+#enquiry {
+    width: 300px;
+    padding: 25px;
+    border: 25px solid navy;
+    margin: 25px;
+}
+
 /* the images will fill the width of the parent container 
 (shrinks and expands with the container and the browser - 
   part of responsive web design)  */ 
@@ -34,10 +41,10 @@ HEADING
 
 h1 {
   font-family: 'PT Sans', sans-serif; 
-  text-align:center;
-  padding-top: 25px;
-  margin: 15px 0;
-  font-size: 1.75em;
+  text-align:left;
+  padding-top: 0px;
+  margin: 0 15px;
+  font-size: 0.5em;
   font-weight:bold;
   line-height:0.8em;
 }
@@ -51,6 +58,19 @@ h2 {
 
 h3 {
  margin: 0 0 1em 0; 
+}
+
+table, td, th {
+    border: 1px gray;
+    margin: 10px 20px;
+    font-size: 1em;
+    color: gray;
+}
+
+th {
+    text-align: left;
+    background-color: white;
+    color: navy blue;
 }
 
 /*********************************************************************************************************
@@ -174,6 +194,7 @@ header {
   margin: 0 0 30px 0; /* Gets rid of the white space on the top*/
   padding: 5px 0 0 0; /* Seperates the heading text from the top a bit */ 
   width: 100%; /* Makes sure it stretches across the page */
+  height: 45px;
 }
 
 h1, h2 {
@@ -185,7 +206,7 @@ nav {
 }
 
 p {
-  color: : #84a2d4;  
+  color: #84a2d4;  
 }
 
 /* Here we select each anchored element in the navigation panel - and the color when a link has been visited*/
@@ -198,6 +219,7 @@ nav a, nav a:visited{
 nav a.selected, nav a:hover{
   color: #ccc;
 }
+
 
 body {
  color: #fff; 

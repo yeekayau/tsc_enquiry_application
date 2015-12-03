@@ -21,12 +21,34 @@
 
 		</header>
 
-		{% for enquiry in rows %}
+			<table style="width:80%">
+ 					<tr>
+              <th>Enquiry ID</th>
+    					<th>First Name</th>
+    					<th>Last Name</th> 
+    					<th>Date of Birth</th>
+              <th>Caregiver</th>
+              <th>Caregiver Firstname</th>
+              <th>Caregiver Lastname</th>
+  					</tr>
 
-			<p>{{ enquiry['firstname'] }}</p>
+  		      {% for enq in rows %}
+            <tr>
+              <td>
+                <a href="{{ url_for('view_enq', enq_id=enq['enq_id'] )}}">
+                  {{ enq['enq_id'] }}
+                </a>
+              </td>
+  						<td>{{ enq['firstname'] }}</td>
+              <td>{{ enq['lastname'] }}</td>
+              <td>{{ enq['dateofbirth'] }}</td>
+              <td>{{ enq['relationship_to_child'] }}</td>
+              <td>{{ enq['caregiver_firstname'] }}</td>
+              <td>{{ enq['caregiver_lastname'] }}</td>
+            </tr>
+            {% endfor %}		
 
-		{% endfor %}
-
+		  </table>
 	</body>
 
 
