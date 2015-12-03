@@ -51,8 +51,9 @@ h1 {
 
 h2 {
   font-size: 0.75em;
-  text-align:center;
-  margin: -5px 0 0; /* sets margin for top, left/right and bottom, negative pulls it closer to objects next to it*/
+  padding-top: 15px;
+  text-align:left;
+  margin: -5px 15px 0; /* sets margin for top, left/right and bottom, negative pulls it closer to objects next to it*/
   font-weight:bold;
 }
 
@@ -60,18 +61,21 @@ h3 {
  margin: 0 0 1em 0; 
 }
 
-table, td, th {
-    border: 1px gray;
-    margin: 10px 20px;
-    font-size: 1em;
-    color: gray;
-}
-
 th {
     text-align: left;
+    border: 1px solid #A5BDCD;
     background-color: white;
-    color: navy blue;
+    color: #1F5B83;
 }
+
+table, td {
+    border: 1px solid #A5BDCD;
+    margin: 10px 20px;
+    font-size: 1em;
+    text-align: left;
+    color: #6b6a6a;
+}
+
 
 /*********************************************************************************************************
 NAVIGATION
@@ -191,10 +195,10 @@ header {
   background-color: #476291;
   border-color: #fff;
   float: left;
-  margin: 0 0 30px 0; /* Gets rid of the white space on the top*/
+  margin: 0 0 20px 0; /* Gets rid of the white space on the top*/
   padding: 5px 0 0 0; /* Seperates the heading text from the top a bit */ 
   width: 100%; /* Makes sure it stretches across the page */
-  height: 45px;
+  height: 57px; /* thickness of the top bar */
 }
 
 h1, h2 {

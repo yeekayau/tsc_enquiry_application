@@ -35,6 +35,8 @@
   		      {% for enq in rows %}
             <tr>
               <td>
+                <!-- in the url_for function, you have to pass in the
+                parameters specified in the function! -->
                 <a href="{{ url_for('view_enq', enq_id=enq['enq_id'] )}}">
                   {{ enq['enq_id'] }}
                 </a>
@@ -51,5 +53,7 @@
 		  </table>
 	</body>
 
-
+    <footer>
+        <p>&copy; 2015 Yeeka Yau</p>
+    </footer>
 </html>

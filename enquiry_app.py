@@ -41,6 +41,7 @@ def index():
 def view_enq(enq_id):
 	enquiry_list = []
 	cursor = cnxn.cursor()
+	# the variable provided needs to be a list
 	cursor.execute("""select * from Enquiries where enquiry_id = ?""", [str(enq_id)] )
 
 	for row in cursor.fetchall():
@@ -53,6 +54,7 @@ def view_enq(enq_id):
 							)
 		enquiry_list.append(enquiry_dict)
 	
+	# You can pass in any python object to a template
 	return render_template('view_enquiry.html', enquiry=enquiry_list)	
 
 
