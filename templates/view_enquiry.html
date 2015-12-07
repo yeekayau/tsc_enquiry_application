@@ -21,10 +21,22 @@
 		</header>
 
 	{% for detail in enquiry %}
+		<section id="primary">
+		<p>Enquiry ID: {{ detail['enq_id'] }}</p>
+		<h3>{{ detail['firstname'] }} {{ detail['lastname'] }}</h3>
+        <ul class="contact-info">
+          <li>Primary Caregiver: {{ detail['caregiver_firstname'] }} {{ detail['caregiver_lastname'] }}</li>
+          <li class="phone"><a href="tel:{{ detail['caregiver_phone'] }}">Primary Caregiver Phone: {{ detail['caregiver_phone'] }}</a> </li> <! the href attribute actually allows mobile      browsers to call it when clicked on>
+          <li class="mail"><a href="mailto:{{ detail['caregiver_email'] }}">Primary Caregiver Email: {{ detail['caregiver_email'] }}</a></li>
+		</ul>
 		
-		<p>{{ detail['enq_id'] }}</p>
-		<p>{{ detail['firstname'] }}</p>
 
+		<form name="update_join_details" action="{{ url_for('view_enq', enq_id=detail['enq_id'] )}}" method="post">
+			<input type="text" name="Comments">
+			<button type="submit">Save</button>
+		</form>
+
+		</section>
 	{% endfor %}	
 
     <footer>

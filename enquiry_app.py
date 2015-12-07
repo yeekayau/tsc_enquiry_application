@@ -1,6 +1,8 @@
 from flask import (Flask, g, render_template, flash, redirect, url_for)
 import pypyodbc
 
+import enquiry_forms
+
 
 DEBUG=True
 
@@ -22,7 +24,8 @@ def index():
 	enquiry_list = []
     
 	cursor = cnxn.cursor()
-	cursor.execute('select * from Enquiries')
+	cursor.execute('select * from Enquiries order by '
+		'date_finish desc')
 	
 	# cursor fetchall() retrieves a list of tuples
 	for row in cursor.fetchall():
@@ -31,7 +34,10 @@ def index():
 							dateofbirth = row[11],
 							relationship_to_child = row[14],
 							caregiver_firstname = row[12],
-							caregiver_lastname = row[13]
+							caregiver_lastname = row[13],
+							caregiver_phone = row[17],
+							caregiver_alt_phone = row[18],
+							caregiver_email = row[19]
 							)
 		enquiry_list.append(enquiry_dict)
 
@@ -50,7 +56,12 @@ def view_enq(enq_id):
 							dateofbirth = row[11],
 							relationship_to_child = row[14],
 							caregiver_firstname = row[12],
-							caregiver_lastname = row[13]
+							caregiver_lastname = row[13],
+							caregiver_phone = row[17],
+							caregiver_alt_phone = row[18],
+							caregiver_email = row[19],
+							preferred_contact_method = row[20]
+
 							)
 		enquiry_list.append(enquiry_dict)
 	

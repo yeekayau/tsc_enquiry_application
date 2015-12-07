@@ -8,32 +8,6 @@ a {
  align-content:center;
 }
 
-/* Hashtags are the ids for elements in the html */
-#wrapper {
- max-width: 940px;
-  margin: 0 auto;
-  padding: 0 5%;
-}
-
-/* The logo id is referring to the Heading of the page*/
-#logo {
-  text-align:center;
-  margin:0;
-}
-
-#enquiry {
-    width: 300px;
-    padding: 25px;
-    border: 25px solid navy;
-    margin: 25px;
-}
-
-/* the images will fill the width of the parent container 
-(shrinks and expands with the container and the browser - 
-  part of responsive web design)  */ 
-img {
-  max-width: 100% 
-}
 
 /*********************************************************************************************************
 HEADING
@@ -70,7 +44,7 @@ th {
 
 table, td {
     border: 1px solid #A5BDCD;
-    margin: 10px 20px;
+    margin: 10px 50px;
     font-size: 1em;
     text-align: left;
     color: #6b6a6a;
@@ -119,53 +93,13 @@ footer {
 }
 
 /*********************************************************************************************************
-Portfolio Page
-**********************************************************************************************************/
-
-#gallery {
-  margin: 0;
-  padding: 0;
-  list-style: none; /* this gets rid of the bullet points next to the images */
-}
-
-/* selects the list elements of the gallery, since the width of the pics are 45%, the margins around each one will fill the pad up the rest of the
-screen */
-#gallery li {
-  float:left;
-  width: 45%;
-  margin: 2.5%;
-  background-color: #f5f5f5;
-  color: #bdc3c7;
-}
-
-/* select the paragraphs inside the anchor elements, inside the list elements in the gallery */
-#gallery li a p {
- margin: 0;
- padding: 5%;
- font-size: 0.75em;
- color: #bdc3c7;
-}
-
-/*********************************************************************************************************
-About Page
-**********************************************************************************************************/
-
-.profile-photo {
-  clear: both;
-  display: block; /* set photo as block rather than in-line */
-  max-width: 150px;
-  margin: 0 auto 30px;
-  border-radius: 100%; /* Rounded borders in the pic (100% makes it a circle in fact) */
-}
-
-/*********************************************************************************************************
-Mathematics Page
+View Enquiries Page
 **********************************************************************************************************/
 
 .contact-info {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 0 30px 0 40px; 
+  margin: 10px 50px;
   font-size: 0.9em;
 }
 
@@ -173,9 +107,9 @@ Mathematics Page
   display: block; /* let each thing take up a block of space*/
   background-repeat: no-repeat; /* by default background images are repeated turn this off*/
   background-size: 20px 20px;
-  padding: 0 0 0 30px; /* start the elements 30px inwards*/
+  padding: 0 30px 0 40px; 
   min-height: 20px;
-  margin: 0 0 10px;
+  margin: 10px 50px;
 }
 
 .contact-info li.phone a {
@@ -211,6 +145,7 @@ nav {
 
 p {
   color: #84a2d4;  
+
 }
 
 /* Here we select each anchored element in the navigation panel - and the color when a link has been visited*/
@@ -226,7 +161,7 @@ nav a.selected, nav a:hover{
 
 
 body {
- color: #fff; 
+ color: #D3D8DC; 
  background-color: #D3D8DC;
  font-family:'Open Sans', sans-serif;
  
