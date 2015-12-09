@@ -15,16 +15,13 @@
 	<body>
 			
 		<header>
-			<h1> The Shepherd Centre </h1>
-			<h2> Enquiries </h2>	
-
-
+			<h1> The Shepherd Centre - Enquiries</h1>
 		</header>
 
 		{% from 'macros.html' import render_field %}
 
 		{% block content %}
-			<form method="POST" action="" class="form">
+			<form method="POST" action="" class="form" id="loginform">
 				{{ form.hidden_tag() }}
 				{% for field in form if field.widget.input_type != 'hidden' %}
 					{{ render_field(field) }}

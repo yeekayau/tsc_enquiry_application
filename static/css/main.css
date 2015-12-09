@@ -50,37 +50,55 @@ table, td {
     color: #6b6a6a;
 }
 
+li {
+  margin: 10px 0px; /* top, left */
+}
 
 /*********************************************************************************************************
 NAVIGATION
 **********************************************************************************************************/
-
 nav {
-    text-align:center;
-    padding: 10px 0;
-    margin: 20px 0 0;
+  margin-top: 0;
+  padding-top: 0;
+  float: right;
+  top: 0;
+  right: 0;
 }
 
-nav a {
-    font-weight:bold;
-    padding:15px 10px;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    background-color: none;
 }
 
-/* select the nav unordered list */
-nav ul{
-  list-style:none;
-  margin: 0 10px;
-  padding: 0;  
-}
-
-/* select the list items in the nav panel, inline-block: puts the items in a line, but with come block properties to give it space */
 nav li {
- display: inline-block;
- padding: 0 10px 0 10px; /* added some padding between the elements*/
+    float: right;
+    top: 0;
+    right: 0;
+}
+
+nav li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    top: 0;
+    right: 0;
+}
+
+nav li a:hover {
+    background-color: #d7eff2;
 }
 
 /******************************************************/
 /*Form Elements*/
+
 form {
     margin: 0;
     padding: 90px;
@@ -133,6 +151,8 @@ button.small {
     margin: 0 auto;
     text-align: center;
 }
+
+/* drop down menu */
 select {
   padding: 0;
   margin: 0 10px 20px;
@@ -168,7 +188,7 @@ View Enquiries Page
   background-size: 20px 20px;
   padding: 0 30px 0 40px; 
   min-height: 20px;
-  margin: 10px 50px;
+  margin: 10px 0px; /* top, left */
 }
 
 .contact-info li.phone a {
@@ -208,9 +228,9 @@ header {
   border-color: #fff;
   float: left;
   margin: 0 0 20px 0; /* Gets rid of the white space on the top*/
-  padding: 5px 0 0 0; /* Seperates the heading text from the top a bit */ 
+  padding: 7px 0 0 0; /* Seperates the heading text from the top a bit */ 
   width: 100%; /* Makes sure it stretches across the page */
-  height: 57px; /* thickness of the top bar */
+  height: 40px; /* thickness of the top bar */
 }
 
 h1, h2 {

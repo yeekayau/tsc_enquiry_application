@@ -17,6 +17,8 @@ TWO COLUMN LAYOUT
   
   #primary{
     width:50%;
+    border-width: 2px;
+    border-color: #000;
     float:left;
   }
 
@@ -25,7 +27,7 @@ TWO COLUMN LAYOUT
     float:right;
   }  
  
-
+}
 
 @media screen and (min-width: 660px) {
 
@@ -46,7 +48,8 @@ HEADER
   }
   
   h1 {
-   font-size: 2.5em; 
+   font-size: 1.5em;
+   margin-top: 5px; 
   }
   
   h2 {
@@ -61,12 +64,7 @@ HEADER
   p {
     margin: 10px 90px;
   }
-  
-  header {
-   border-bottom:5px solid #5f5d66;
-   margin-bottom: 60px;
-  }
-  
+
   /* beyond 660 px, desktops/large tablets */
   body{
    color: #84a2d4;

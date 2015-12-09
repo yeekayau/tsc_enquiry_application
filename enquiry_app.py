@@ -74,7 +74,17 @@ def login():
 	return render_template('login.html', form=form)
 
 
+@app.route('/logout')
+@login_required
+def logout():
+	logout_user()
+	flash("You've logged out. Come back soon!", "success")
+	return redirect(url_for('login'))
+
+
+
 @app.route('/index')
+@login_required
 def index():
 
 	enquiry_list = []

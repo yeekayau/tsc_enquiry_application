@@ -18,24 +18,52 @@
 	<body>
 			
 		<header>
-			<h1> The Shepherd Centre </h1>
-			<h2> Enquiry Details </h2>	
+			<h1> The Shepherd Centre - Equiry Details</h1>
 		</header>
+
+		<nav>
+        	<ul>
+          		<li><a href="{{ url_for('logout') }}">Log out</a></li>
+        	</ul>
+        </nav>
 
 	{% for detail in enquiry %}
 		<section id="primary">
 		<p>Enquiry ID: {{ detail['enq_id'] }}</p>
-		<h3>{{ detail['firstname'] }} {{ detail['lastname'] }}</h3>
+		<h3>
+			{{ detail['firstname'] }} {{ detail['lastname'] }}
+		</h3>
         <ul class="contact-info">
-          <li>Primary Caregiver: {{ detail['caregiver_firstname'] }} {{ detail['caregiver_lastname'] }}</li>
-          <li>Preferred Contact Method: {{ detail['preferred_contact_method'] }}</li>
-
-          <li class="phone"><a href="tel:{{ detail['caregiver_phone'] }}">Phone: {{ detail['caregiver_phone'] }}</a> </li> <! the href attribute actually allows mobile      browsers to call it when clicked on>
-          <li class="phone"><a href="tel:{{ detail['caregiver_phone'] }}">Alternate Phone: {{ detail['caregiver_alt_phone'] }}</a> </li> 
-          <li class="mail"><a href="mailto:{{ detail['caregiver_email'] }}">Email: {{ detail['caregiver_email'] }}</a></li>
-
+          <li>Primary Caregiver: {{ detail['caregiver_firstname'] }} {{ detail['caregiver_lastname'] }}
+          </li>
+          <li>Preferred Contact Method: {{ detail['preferred_contact_method'] }}
+          </li>
+          <li class="phone"><a href="tel:{{ detail['caregiver_phone'] }}">Phone: {{ detail['caregiver_phone'] }}</a> 
+          </li> 
+          <li class="phone"><a href="tel:{{ detail['caregiver_phone'] }}">Alternate Phone: {{ detail['caregiver_alt_phone'] }}</a> 
+          </li> 
+          <li class="mail"><a href="mailto:{{ detail['caregiver_email'] }}">Email: {{ detail['caregiver_email'] }}</a>
+          </li>
+          <li>How we can help: {{ detail['how_we_can_help'] }}</li>
 		</ul>
 		
+		<h3>Preferred Contact Days and Times</h3>
+
+		{% if detail['p_c_day_mon_morning'] == 1 or 
+				detail['p_c_day_mon_lunch'] == 1 or
+				detail['p_c_day_mon_afternoon'] == 1 %}
+
+				<h3>Monday</h3>
+				{% if detail['p_c_day_mon_morning'] == 1 %}
+					<p>Morning</p>
+				{% endif %}
+
+			{% endif %}	
+
+		</section>
+
+		<section id="secondary">
+
 		<form method="POST" action="" class="form">
 			{{ form.hidden_tag() }}
 				{% for field in form if field.widget.input_type != 'hidden' %}
@@ -47,16 +75,6 @@
 		</section>
 
 	{% endfor %}	
-
-        <!-- Flash messages -->
-        {% with messages = get_flashed_messages(with_categories=True) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="notification {{ category }}">{{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
 
 
     <footer>

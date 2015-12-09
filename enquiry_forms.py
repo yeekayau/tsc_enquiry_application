@@ -14,8 +14,7 @@ class JoinDetailsForm(Form):
 												],
 										validators = [DataRequired()])
 
-	comments = TextAreaField("Please add any additional comments", 
-								validators = [DataRequired()])
+	comments = TextAreaField("Please add any additional comments")
 
 
 class LoginForm(Form):
