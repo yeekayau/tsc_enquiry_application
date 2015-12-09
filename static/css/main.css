@@ -18,7 +18,7 @@ h1 {
   text-align:left;
   padding-top: 0px;
   margin: 0 15px;
-  font-size: 0.5em;
+  font-size: 0.2em;
   font-weight:bold;
   line-height:0.8em;
 }
@@ -79,6 +79,65 @@ nav li {
  padding: 0 10px 0 10px; /* added some padding between the elements*/
 }
 
+/******************************************************/
+/*Form Elements*/
+form {
+    margin: 0;
+    padding: 90px;
+    border-color: 2px solid #D3D8DC; 
+}
+input {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #D3D8DC;
+  outline: 0;
+  background: #fff;
+  padding: 20px 0 4px;
+  margin: 0 0 20px;
+  color: #777B7E;
+}
+input:focus {
+  border-color: #6ECDF7;
+  color: #2C3238;
+}
+textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #D3D8DC;
+  outline: 0;
+  background: #fff;
+  padding: 40px 0 4px;
+  margin: 0 0 20px;
+  color: #777B7E;
+}
+textarea:focus {
+  border-color: #6ECDF7;
+  color: #2C3238;
+}
+button {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  background: #6ECDF7;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  opacity: .8;
+  transition: .35s linear;
+}
+button:hover {
+  opacity: 1;
+}
+button.small {
+    padding: 1em 0.5em;
+    margin: 0 auto;
+    text-align: center;
+}
+select {
+  padding: 0;
+  margin: 0 10px 20px;
+}
+
 /*********************************************************************************************************
 FOOTER
 **********************************************************************************************************/
@@ -120,6 +179,25 @@ View Enquiries Page
 .contact-info li.mail a {
   background-image: url('../img/mail.png')
 
+}
+
+
+/*******************************************************/
+/*Notifications*/
+.notification {
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #fff;
+}
+.success {
+  background: #70DA8B;
+  color: #4DA463;
+}
+.error {
+  background: #FFE6B2;
+  color: #C5A14E;
+  margin-bottom: 20px;
 }
 
 /*********************************************************************************************************

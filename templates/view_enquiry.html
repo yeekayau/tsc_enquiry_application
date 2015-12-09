@@ -1,3 +1,5 @@
+{% from 'macros.html' import render_field %}
+
 <!DOCTYPE html>
 <html>
 
@@ -17,7 +19,7 @@
 			
 		<header>
 			<h1> The Shepherd Centre </h1>
-			<h2> View Enquiry </h2>	
+			<h2> Enquiry Details </h2>	
 		</header>
 
 	{% for detail in enquiry %}
@@ -26,18 +28,36 @@
 		<h3>{{ detail['firstname'] }} {{ detail['lastname'] }}</h3>
         <ul class="contact-info">
           <li>Primary Caregiver: {{ detail['caregiver_firstname'] }} {{ detail['caregiver_lastname'] }}</li>
-          <li class="phone"><a href="tel:{{ detail['caregiver_phone'] }}">Primary Caregiver Phone: {{ detail['caregiver_phone'] }}</a> </li> <! the href attribute actually allows mobile      browsers to call it when clicked on>
-          <li class="mail"><a href="mailto:{{ detail['caregiver_email'] }}">Primary Caregiver Email: {{ detail['caregiver_email'] }}</a></li>
+          <li>Preferred Contact Method: {{ detail['preferred_contact_method'] }}</li>
+
+          <li class="phone"><a href="tel:{{ detail['caregiver_phone'] }}">Phone: {{ detail['caregiver_phone'] }}</a> </li> <! the href attribute actually allows mobile      browsers to call it when clicked on>
+          <li class="phone"><a href="tel:{{ detail['caregiver_phone'] }}">Alternate Phone: {{ detail['caregiver_alt_phone'] }}</a> </li> 
+          <li class="mail"><a href="mailto:{{ detail['caregiver_email'] }}">Email: {{ detail['caregiver_email'] }}</a></li>
+
 		</ul>
 		
-
-		<form name="update_join_details" action="{{ url_for('view_enq', enq_id=detail['enq_id'] )}}" method="post">
-			<input type="text" name="Comments">
-			<button type="submit">Save</button>
+		<form method="POST" action="" class="form">
+			{{ form.hidden_tag() }}
+				{% for field in form if field.widget.input_type != 'hidden' %}
+					{{ render_field(field) }}
+				{% endfor %}
+			<button type="submit" id="submit">Save</button>
 		</form>
 
 		</section>
+
 	{% endfor %}	
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="notification {{ category }}">{{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
 
     <footer>
         <p>&copy; 2015 Yeeka Yau</p>
