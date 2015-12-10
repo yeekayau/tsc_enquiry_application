@@ -88,8 +88,8 @@ def index():
 	enquiry_list = []
     
 	cursor = cnxn.cursor()
-	cursor.execute('select * from Enquiries order by '
-		'date_finish desc')
+	cursor.execute('select * from Enquiries where result_status = "Complete" ' 
+		'order by date_finish desc')
 	
 	# cursor fetchall() retrieves a list of tuples
 	for row in cursor.fetchall():

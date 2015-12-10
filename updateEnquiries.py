@@ -110,10 +110,11 @@ sql = ('insert into Enquiries('
 '[p_c_day_fri_afternoon], '
 '[how_can_we_help], '
 'joined_program,'
-'not_joined_reason) ' #38
+'not_joined_reason,'
+'completed_by_staffname) ' #39
 'values '
 '(?,?,?,?,?,?,?,Newid(),?,?,?,?,?,?,?,?,?,?,?,?,?,'
-'?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,0)')
+'?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0,0,?)')
 
 entries_added = 0
 for result in enquiry_list:
@@ -184,6 +185,11 @@ for result in enquiry_list:
         else:
             how_can_we_help = 'This is a mystery'
 
+        if result.get('completed_by_staffname'):
+            completed_by_staffname = result.get('completed_by_staffname')
+        else:
+            completed_by_staffname = None
+
         insert_tuple = (result_status, 
                     date_start, 
                     date_finish,
@@ -218,7 +224,9 @@ for result in enquiry_list:
                     p_c_day_fri_morning, 
                     p_c_day_fri_lunch, 
                     p_c_day_fri_afternoon, 
-                    how_can_we_help)
+                    how_can_we_help,
+                    completed_by_staffname
+                    )
 
         cursor.execute(sql, insert_tuple)
         cnxn.commit()
