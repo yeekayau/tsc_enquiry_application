@@ -110,8 +110,8 @@ def index():
 
 	form = enquiry_forms.UpdateEnqForm()
 	if form.validate_on_submit():
-		flash("I did something")
-		print("I did something") #working
+		exec(open("updateEnquiries.py").read())
+		flash("Updated!", "success") # working
 		redirect( url_for('index', rows=enquiry_list, form=form) )
 
 
