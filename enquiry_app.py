@@ -1,4 +1,5 @@
-from flask import (Flask, g, render_template, flash, redirect, url_for)
+from flask import (Flask, g, render_template, flash, redirect, url_for,
+					request)
 from flask.ext.login import (LoginManager, login_user, logout_user,
 								login_required, current_user)
 
@@ -81,7 +82,7 @@ def logout():
 
 
 
-@app.route('/index')
+@app.route('/index', methods=['GET','POST'])
 @login_required
 def index():
 
