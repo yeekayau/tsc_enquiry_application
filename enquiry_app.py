@@ -81,7 +81,6 @@ def logout():
 	return redirect(url_for('login'))
 
 
-
 @app.route('/index', methods=['GET','POST'])
 @login_required
 def index():
@@ -112,6 +111,7 @@ def index():
 	return render_template('index.html', rows=enquiry_list)
 	
 @app.route('/enquiry/<int:enq_id>', methods=('GET','POST'))
+@login_required
 def view_enq(enq_id):
 
 	enquiry_list = []
