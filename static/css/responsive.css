@@ -23,8 +23,10 @@ TWO COLUMN LAYOUT
   }
 
   #secondary{
-    width:40%;
+    width:50%;
     float:right;
+    border-width: 2px;
+    border-color: #000;
   }  
  
 }

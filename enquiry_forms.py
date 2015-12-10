@@ -8,7 +8,7 @@ class JoinDetailsForm(Form):
 	Joined_service = SelectField( "Joined Service?", choices=[('1','Yes'),('0','No')],
 									 validators = [DataRequired()] )
 	Did_not_join_reason = SelectField("Did Not Join Reason", 
-										choices=[	('NULL','None'),
+										choices=[	('Joined','Joined Service'),
 													('Distance','Distance'),
 													('Time Constraints', 'Time Constraints')
 												],

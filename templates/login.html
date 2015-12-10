@@ -1,3 +1,4 @@
+{% from 'macros.html' import render_field %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -18,16 +19,19 @@
 			<h1> The Shepherd Centre - Enquiries</h1>
 		</header>
 
-		{% from 'macros.html' import render_field %}
+		
 
 		{% block content %}
-			<form method="POST" action="" class="form" id="loginform">
+		<div class="frontform">
+			<form method="POST" action="" class="loginform">
+				<p class="title">Log in</p>
 				{{ form.hidden_tag() }}
 				{% for field in form if field.widget.input_type != 'hidden' %}
 					{{ render_field(field) }}
 				{% endfor %}
 				<button type="submit" id="submit">Log In</button>
 			</form>
+		</div>
 		{% endblock %}
 
 </html>

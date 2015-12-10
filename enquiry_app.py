@@ -78,7 +78,6 @@ def login():
 @login_required
 def logout():
 	logout_user()
-	flash("You've logged out. Come back soon!", "success")
 	return redirect(url_for('login'))
 
 
@@ -166,6 +165,7 @@ def view_enq(enq_id):
 							 """, (joined_service, did_not_join_reason,
 							 		comments, enq_id) )
 		cnxn.commit()
+		return redirect(url_for('view_enq', enq_id = enq_id ))
 
 
 	# You can pass in any python object to a template

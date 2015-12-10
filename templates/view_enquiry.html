@@ -18,7 +18,10 @@
 	<body>
 			
 		<header>
-			<h1> The Shepherd Centre - Equiry Details</h1>
+			<h1> 
+				<a href="{{ url_for('index') }}">
+				The Shepherd Centre - Equiry Details</a>
+			</h1>
 		</header>
 
 		<nav>
@@ -26,6 +29,17 @@
           		<li><a href="{{ url_for('logout') }}">Log out</a></li>
         	</ul>
         </nav>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="notification {{ category }}">{{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}  
+
+
 
 	{% for detail in enquiry %}
 		<section id="primary">
@@ -44,26 +58,77 @@
           </li> 
           <li class="mail"><a href="mailto:{{ detail['caregiver_email'] }}">Email: {{ detail['caregiver_email'] }}</a>
           </li>
-          <li>How we can help: {{ detail['how_we_can_help'] }}</li>
 		</ul>
 		
 		<h3>Preferred Contact Days and Times</h3>
 
-		{% if detail['p_c_day_mon_morning'] == 1 or 
-				detail['p_c_day_mon_lunch'] == 1 or
-				detail['p_c_day_mon_afternoon'] == 1 %}
+		<table style="width:70%">
+			<tr>
+				<th>Time of Day</th>
+    	       	<th>Monday</th>
+       		    <th>Tuesday</th>
+        		<th>Wednesday</th>
+    			<th>Thursday</th> 
+    			<th>Friday</th>
+           	</tr>
+				
+			<tr>
+				<td>Morning</td>
+				<td>{% if detail['p_c_day_mon_morning'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_tues_morning'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_wed_morning'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_thurs_morning'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_fri_morning'] == 1 %}Yes{% endif %}</td>
+			</tr>
 
-				<h3>Monday</h3>
-				{% if detail['p_c_day_mon_morning'] == 1 %}
-					<p>Morning</p>
-				{% endif %}
+			<tr>
+				<td>Lunch</td>
+				<td>{% if detail['p_c_day_mon_lunch'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_tues_lunch'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_wed_lunch'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_thurs_lunch'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_fri_lunch'] == 1 %}Yes{% endif %}</td>
+			</tr>
 
-			{% endif %}	
+			<tr>
+				<td>Afternoon</td>
+				<td>{% if detail['p_c_day_mon_afternoon'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_tues_afternoon'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_wed_afternoon'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_thurs_afternoon'] == 1 %}Yes{% endif %}</td>
+				<td>{% if detail['p_c_day_fri_afternoon'] == 1 %}Yes{% endif %}</td>
+			</tr>
+
+		 </table>
+
+		<h3>How we can help:</h3> 
+		<p>{{ detail['how_we_can_help'] }}</p>
+		
+		<h3>Joined Program?</h3> 
+		{% if detail['joined_program'] == 1%}
+			<p>Yes</p>
+		{% else %}
+			<p>No</p>
+		{% endif %}
+
+		{% if detail['joined_program'] != 0%}
+		<h3>Not Joined Reason</h3> 
+			<p>{{ detail['not_joined_reason'] }}</p>
+		{% endif %}
+
+		{% if detail['comments'] != None %}
+		<article>
+		<h3>Comments</h3> 
+			<p>{{ detail['comments'] }}</p>
+		</article>
+		{% endif %}
 
 		</section>
 
 		<section id="secondary">
 
+		<h3>Update Enquiry Details</h3>	
+		
 		<form method="POST" action="" class="form">
 			{{ form.hidden_tag() }}
 				{% for field in form if field.widget.input_type != 'hidden' %}
@@ -73,7 +138,6 @@
 		</form>
 
 		</section>
-
 	{% endfor %}	
 
 
