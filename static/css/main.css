@@ -95,6 +95,7 @@ nav li {
     float: right;
     top: 0;
     right: 0;
+    margin-top: 0;
 }
 
 nav li a {

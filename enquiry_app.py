@@ -67,10 +67,9 @@ def login():
 				print(username)
 				user = User(userid, username)
 				login_user(user)
-				flash("You have logged in!", "success")
 			return redirect(url_for('index'))
 		else:
-			flash("You email or password is incorrect", "error")
+			flash("Your email or password is incorrect", "error")
 	return render_template('login.html', form=form)
 
 
@@ -151,7 +150,6 @@ def view_enq(enq_id):
 	
 	form = enquiry_forms.JoinDetailsForm()
 	if form.validate_on_submit():
-		flash("Details Saved!", "success")
 		joined_service = form.Joined_service.data
 		did_not_join_reason = form.Did_not_join_reason.data
 		comments = form.comments.data
@@ -165,6 +163,7 @@ def view_enq(enq_id):
 							 """, (joined_service, did_not_join_reason,
 							 		comments, enq_id) )
 		cnxn.commit()
+		flash("Details Saved!", "success")
 		return redirect(url_for('view_enq', enq_id = enq_id ))
 
 
