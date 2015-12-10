@@ -108,7 +108,14 @@ def index():
 							)
 		enquiry_list.append(enquiry_dict)
 
-	return render_template('index.html', rows=enquiry_list)
+	form = enquiry_forms.UpdateEnqForm()
+	if form.validate_on_submit():
+		flash("I did something")
+		print("I did something") #working
+		redirect( url_for('index', rows=enquiry_list, form=form) )
+
+
+	return render_template('index.html', rows=enquiry_list, form=form)
 	
 @app.route('/enquiry/<int:enq_id>', methods=('GET','POST'))
 @login_required

@@ -1,5 +1,6 @@
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, TextAreaField, SelectField, RadioField
+from wtforms import (StringField, PasswordField, TextAreaField, SelectField, 
+					 RadioField, SubmitField)
 from wtforms.validators import (DataRequired, Regexp, ValidationError,
 								Email, Length, EqualTo
 								)
@@ -20,3 +21,7 @@ class JoinDetailsForm(Form):
 class LoginForm(Form):
 	username = StringField('Username', validators=[DataRequired()])
 	password = PasswordField('Password',validators=[DataRequired()])
+
+
+class UpdateEnqForm(Form):
+	update = SubmitField('Update')
