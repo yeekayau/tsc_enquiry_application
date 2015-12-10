@@ -24,7 +24,7 @@
 		{% block content %}
 		<div class="frontform">
 			<form method="POST" action="" class="loginform">
-				<p class="title">Log in</p>
+				<p class="title">Come on in!</p>
 				{{ form.hidden_tag() }}
 				{% for field in form if field.widget.input_type != 'hidden' %}
 					{{ render_field(field) }}
