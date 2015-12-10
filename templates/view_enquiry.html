@@ -129,7 +129,7 @@
 
 		<h3>Update Enquiry Details</h3>	
 		
-		<form method="POST" action="" class="form">
+		<form method="POST" action="" class="detailsform">
 			{{ form.hidden_tag() }}
 				{% for field in form if field.widget.input_type != 'hidden' %}
 					{{ render_field(field) }}
