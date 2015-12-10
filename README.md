@@ -5,7 +5,7 @@
 * Quick summary
 * Version 1
 
-This is the program to pull New Enquiry Form data from formsite
+Enquiries application
 
 
 ### How do I get set up? ###
@@ -17,12 +17,15 @@ This is the program to pull New Enquiry Form data from formsite
 * How to run tests
 * Deployment instructions
 
-### Libraries required: ###
+### Python Libraries required: ###
 
-pypyodbc
-urllib.request
-xml.etree import ElementTree
-formXMLDataHandler import getEnquiryFormData
+* pypyodbc (db connection)
+* urllib.request (formsite link)
+* xml.etree (xml parser library)
+* flask (web app)
+* flask_login (handles logins)
+* flask_wtf (flask forms)
+* wt_forms
 
 ### Who do I talk to? ###
 
