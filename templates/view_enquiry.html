@@ -48,6 +48,15 @@
 			{{ detail['firstname'] }} {{ detail['lastname'] }}
 		</h3>
         <ul class="contact-info">
+          <li>Enquiry completed by: {{ detail['completed_by'] }}
+          </li>
+
+          {% if detail['completed_by_staffname'] != None %}
+          <li>Staff Name: {{ detail['completed_by_staffname'] }}
+          </li>
+          {% endif %}
+
+
           <li>Primary Caregiver: {{ detail['caregiver_firstname'] }} {{ detail['caregiver_lastname'] }}
           </li>
           <li>Preferred Contact Method: {{ detail['preferred_contact_method'] }}

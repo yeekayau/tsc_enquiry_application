@@ -88,7 +88,7 @@ def index():
 	enquiry_list = []
     
 	cursor = cnxn.cursor()
-	cursor.execute('select * from Enquiries where result_status = "Complete" ' 
+	cursor.execute('select * from Enquiries ' 
 		'order by date_finish desc')
 	
 	# cursor fetchall() retrieves a list of tuples
@@ -116,7 +116,9 @@ def view_enq(enq_id):
 	cursor.execute("""select * from Enquiries where enquiry_id = ?""", [str(enq_id)] )
 
 	for row in cursor.fetchall():
-		enquiry_dict = dict(enq_id = row[0], enq_date = row[3], firstname = row[9],
+		enquiry_dict = dict(enq_id = row[0], enq_date = row[3], 
+							completed_by = row[7],
+							firstname = row[9],
 							lastname = row[10],
 							dateofbirth = row[11],
 							relationship_to_child = row[14],
@@ -144,7 +146,8 @@ def view_enq(enq_id):
 							how_we_can_help = row[36],
 							joined_program = row[37],
 							not_joined_reason = row[38],
-							comments = row[39]
+							comments = row[39],
+							completed_by_staffname = row[40]
 							)
 		enquiry_list.append(enquiry_dict)
 	
