@@ -53,6 +53,10 @@ th {
     color: #1F5B83;
 }
 
+table, a:visited {
+  color: #000;
+}
+
 table, td {
     border: 1px solid #A5BDCD;
     margin: 10px 50px;
@@ -74,6 +78,7 @@ NAVIGATION
 **********************************************************************************************************/
 nav {
   margin-top: 0;
+  font-size: 1.125em;
   padding-top: 0;
   float: right;
   top: 0;
@@ -399,6 +404,33 @@ View Enquiries Page
   background: #FFE6B2;
   color: #C5A14E;
   margin-bottom: 20px;
+}
+/*********************************************************/
+/*Footer*/
+footer{
+  color: #777B7E;
+  text-align: center;
+  font-size: .875em;
+  margin: 40px 0;
+}
+
+footer p {
+  opacity: .7;
+}
+
+/*Grid*/
+.row {
+  max-width: 800px;
+  padding: 0 40px;
+  margin: 0 auto;
+  transition: .35s linear;
+}
+.row:before, .row:after {
+  content: '';
+  display: table;
+}
+.row:after {
+  clear: both;
 }
 
 /*********************************************************************************************************

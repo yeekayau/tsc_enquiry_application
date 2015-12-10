@@ -93,7 +93,10 @@ def index():
 	
 	# cursor fetchall() retrieves a list of tuples
 	for row in cursor.fetchall():
-		enquiry_dict = dict(enq_id = row[0], enq_date = row[3], firstname = row[9],
+		enquiry_dict = dict(enq_id = row[0], 
+							result_status = row[1],
+							enq_date = row[3], 
+							firstname = row[9],
 							lastname = row[10],
 							dateofbirth = row[11],
 							relationship_to_child = row[14],
