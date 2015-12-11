@@ -115,6 +115,7 @@ def index():
 @login_required
 def refresh():
 	exec(open("updateEnquiries.py").read())
+	flash("Updated! Any new enquiries will appear in table below", "success")
 	return redirect(url_for('index'))
 	
 
