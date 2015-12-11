@@ -37,6 +37,8 @@
             {% endif %}
         {% endwith %}  
 
+      <a href="{{ url_for('refresh') }}"><button class="updatebutton">Update</button></a>
+
 			<table style="width:80%">
  					<tr>
               <th>Enquiry ID</th>
@@ -72,7 +74,7 @@
 
 		  </table>
 
-     <a href="{{ url_for('refresh') }}"><button class="updatebutton">Update</button></a>
+     
 
   </body>
 
