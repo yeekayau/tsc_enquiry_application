@@ -24,7 +24,7 @@ for dictionary in enquiry_list:
     for key, name in dictionary.items():
         print(key + ': ' + name)
  
-def validatePreferredContactDayTime(contact_time):
+def validatePreferredContactDayTime(result, contact_time):
     if result.get(contact_time):
         c_time = 1
     else:
@@ -164,21 +164,21 @@ for result in enquiry_list:
             caregiver_email = result.get('caregiver_email')
 
         preferred_contact_method = result.get('preferred_contact_method')
-        p_c_day_mon_morning = validatePreferredContactDayTime('p_c_day_mon_morning')
-        p_c_day_mon_lunch = validatePreferredContactDayTime('p_c_day_mon_lunch')
-        p_c_day_mon_afternoon = validatePreferredContactDayTime('p_c_day_mon_afternoon')    
-        p_c_day_tues_morning = validatePreferredContactDayTime('p_c_day_tues_morning')
-        p_c_day_tues_lunch = validatePreferredContactDayTime('p_c_day_tues_lunch')
-        p_c_day_tues_afternoon = validatePreferredContactDayTime('p_c_day_tues_afternoon')
-        p_c_day_wed_morning = validatePreferredContactDayTime('p_c_day_wed_morning')
-        p_c_day_wed_lunch = validatePreferredContactDayTime('p_c_day_wed_lunch')
-        p_c_day_wed_afternoon = validatePreferredContactDayTime('p_c_day_wed_afternoon')
-        p_c_day_thurs_morning = validatePreferredContactDayTime('p_c_day_thurs_morning')
-        p_c_day_thurs_lunch = validatePreferredContactDayTime('p_c_day_thurs_lunch')
-        p_c_day_thurs_afternoon = validatePreferredContactDayTime('p_c_day_thurs_afternoon')
-        p_c_day_fri_morning = validatePreferredContactDayTime('p_c_day_fri_morning')
-        p_c_day_fri_lunch = validatePreferredContactDayTime('p_c_day_fri_lunch')
-        p_c_day_fri_afternoon = validatePreferredContactDayTime('p_c_day_fri_afternoon')
+        p_c_day_mon_morning = validatePreferredContactDayTime(result, 'p_c_day_mon_morning')
+        p_c_day_mon_lunch = validatePreferredContactDayTime(result, 'p_c_day_mon_lunch')
+        p_c_day_mon_afternoon = validatePreferredContactDayTime(result, 'p_c_day_mon_afternoon')    
+        p_c_day_tues_morning = validatePreferredContactDayTime(result, 'p_c_day_tues_morning')
+        p_c_day_tues_lunch = validatePreferredContactDayTime(result, 'p_c_day_tues_lunch')
+        p_c_day_tues_afternoon = validatePreferredContactDayTime(result, 'p_c_day_tues_afternoon')
+        p_c_day_wed_morning = validatePreferredContactDayTime(result, 'p_c_day_wed_morning')
+        p_c_day_wed_lunch = validatePreferredContactDayTime(result, 'p_c_day_wed_lunch')
+        p_c_day_wed_afternoon = validatePreferredContactDayTime(result, 'p_c_day_wed_afternoon')
+        p_c_day_thurs_morning = validatePreferredContactDayTime(result, 'p_c_day_thurs_morning')
+        p_c_day_thurs_lunch = validatePreferredContactDayTime(result, 'p_c_day_thurs_lunch')
+        p_c_day_thurs_afternoon = validatePreferredContactDayTime(result, 'p_c_day_thurs_afternoon')
+        p_c_day_fri_morning = validatePreferredContactDayTime(result, 'p_c_day_fri_morning')
+        p_c_day_fri_lunch = validatePreferredContactDayTime(result, 'p_c_day_fri_lunch')
+        p_c_day_fri_afternoon = validatePreferredContactDayTime(result, 'p_c_day_fri_afternoon')
 
         if result.get('How_can_we_help'):
             how_can_we_help = result.get('How_can_we_help')
@@ -233,6 +233,7 @@ for result in enquiry_list:
         entries_added = entries_added + 1
 
 cnxn.close()
-messageBox = ctypes.windll.user32.MessageBoxW
-returnValue = messageBox(None,"{} new entries have been downloaded!".format(entries_added),
-                         "Done!", 0x40 | 0x0)
+# message box for when application is run directly
+#messageBox = ctypes.windll.user32.MessageBoxW
+#returnValue = messageBox(None,"{} new entries have been downloaded!".format(entries_added),
+ #                        "Done!", 0x40 | 0x0)
