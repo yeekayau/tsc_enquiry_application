@@ -108,7 +108,7 @@ def index():
 							)
 		enquiry_list.append(enquiry_dict)
 
-	return render_template('index.html', rows=enquiry_list, form=form)
+	return render_template('index.html', rows=enquiry_list)
 
 
 @app.route('/refresh')
