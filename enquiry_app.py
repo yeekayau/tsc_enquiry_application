@@ -108,14 +108,16 @@ def index():
 							)
 		enquiry_list.append(enquiry_dict)
 
-	form = enquiry_forms.UpdateEnqForm()
-	if form.validate_on_submit():
-		exec(open("updateEnquiries.py").read())
-		flash("Updated! Please refresh the page to "
-				"retrieve any new enquiries", "success")
-
 	return render_template('index.html', rows=enquiry_list, form=form)
+
+
+@app.route('/refresh')
+@login_required
+def refresh():
+	exec(open("updateEnquiries.py").read())
+	return redirect(url_for('index'))
 	
+
 @app.route('/enquiry/<int:enq_id>', methods=('GET','POST'))
 @login_required
 def view_enq(enq_id):

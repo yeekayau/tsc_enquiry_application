@@ -72,12 +72,7 @@
 
 		  </table>
 
-     <form method="POST" action="" class="updateform">
-        {{ form.hidden_tag() }}
-          {% for field in form if field.widget.input_type !=  'hidden' %}
-            {{ render_field(field) }}
-          {% endfor %}
-     </form>
+     <a href="{{ url_for('refresh') }}"><button>Update</button></a>
 
   </body>
 

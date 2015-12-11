@@ -21,7 +21,3 @@ class JoinDetailsForm(Form):
 class LoginForm(Form):
 	username = StringField('Username', validators=[DataRequired()])
 	password = PasswordField('Password',validators=[DataRequired()])
-
-
-class UpdateEnqForm(Form):
-	update = SubmitField('Update')
