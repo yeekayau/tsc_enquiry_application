@@ -2,20 +2,7 @@
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version 1
-
-Enquiries application
-
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+This was a small flask web application I built to help solve a problem in-house with recording client enquiries to The Shepherd Centre. It uses utilises the Formsite API to take advantage of it's user friendly form-building tools. It is a working MVP and has not yet been deployed into production.
 
 ### Python Libraries required: ###
 
@@ -26,7 +13,3 @@ Enquiries application
 * flask_login (handles logins)
 * flask_wtf (flask forms)
 * wt_forms
-
-### Who do I talk to? ###
-
-* Yeeka
