@@ -2,7 +2,7 @@
 
 ### What is this repository for? ###
 
-This was a small flask web application I built to help solve a problem in-house with recording client enquiries to The Shepherd Centre. It uses utilises the Formsite API to take advantage of it's user friendly form-building tools. It is a working MVP and has not yet been deployed into production.
+This was a small flask web application I built to help solve a problem in-house with recording client enquiries to The Shepherd Centre. It uses utilises the Formsite API to take advantage of it's user friendly form-building tools. It is a working MVP but was not deployed into production.
 
 ### Python Libraries required: ###
 
